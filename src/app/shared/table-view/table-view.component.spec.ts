@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TableViewComponent } from './table-view.component';
+import { ResultTableViewComponent } from './result-table-view.component';
 
-describe('TableViewComponent', () => {
-  let component: TableViewComponent;
-  let fixture: ComponentFixture<TableViewComponent>;
+describe('ResultTableViewComponent', () => {
+  let component: ResultTableViewComponent;
+  let fixture: ComponentFixture<ResultTableViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TableViewComponent],
+      declarations: [ResultTableViewComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TableViewComponent);
+    fixture = TestBed.createComponent(ResultTableViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

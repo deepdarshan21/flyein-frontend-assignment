@@ -1,5 +1,8 @@
-<div class="tw-m-24-px">
-  <div class="tw-mb-24-px tw-text-24-px"> Top {{ booksList.length }} book{{ booksList.length > 1 ? "s" : "" }} on {{ subjectName }}</div>
+<!-- <div class="tw-m-24-px">
+  <div class="tw-mb-24-px tw-text-24-px">
+    Top {{ booksList.length }} book{{ booksList.length > 1 ? 's' : '' }} on
+    {{ subjectName }}
+  </div>
 
   <ng-container>
     <table class="table-view">
@@ -13,14 +16,64 @@
       <tbody class="table-body">
         <tr *ngFor="let book of booksList" class="row-data">
           <td>
-            <a class="tw-no-underline" href="https://openlibrary.org{{ book.key }}" target="_blank">{{ book.title }}</a>
+            <a
+              class="tw-no-underline"
+              href="https://openlibrary.org{{ book.key }}"
+              target="_blank"
+              >{{ book.title }}</a
+            >
           </td>
           <td>
-            {{ book.authors.length > 0 ? book.authors[0].name : "Unknown" }}
+            {{ book.authors?.[0]?.name || book.author_name?.[0] ||  "Unknown" }}
           </td>
           <td>{{ book.first_publish_year }}</td>
         </tr>
       </tbody>
     </table>
   </ng-container>
-</div>
+</div> -->
+
+<mat-table [dataSource]="booksList.data" class="tw-flex-1 tw-w-full tw-h-full">
+  <!-- Name Column -->
+  <ng-container matColumnDef="title">
+    <mat-header-cell class="header-bold" *matHeaderCellDef
+      >Title</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="author_name">
+    <mat-header-cell class="header-bold" *matHeaderCellDef
+      >Author</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element">{{
+      element.author_name
+        ? element.author_name.length > 0
+          ? element.author_name[0]
+          : 'Unknown'
+        : 'Unknown'
+    }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="authors">
+    <mat-header-cell class="header-bold" *matHeaderCellDef
+      >Author</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element">{{
+      element.authors
+        ? element.authors.length > 0
+          ? element.authors[0].name
+          : 'Unknown'
+        : 'Unknown'
+    }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="first_publish_year">
+    <mat-header-cell class="header-bold" *matHeaderCellDef
+      >Year Of Publication</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element">{{
+      element.first_publish_year
+    }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="getDisplayedColumns()"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: getDisplayedColumns()"></mat-row>
+</mat-table>

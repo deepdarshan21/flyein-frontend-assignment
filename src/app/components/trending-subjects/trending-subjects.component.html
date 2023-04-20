@@ -1,6 +1,12 @@
-<div *ngIf="allBooks.length > 0">
+<!-- <div *ngIf="allBooks.length > 0">
   <front-end-internship-assignment-table-view
-  [booksList]="allBooks"
-  [subjectName]="subjectName"
+  [booksList]="dataSource"
   ></front-end-internship-assignment-table-view>
-</div>
+</div> -->
+
+<front-end-internship-assignment-table-view
+  [booksList]="bookSearchResult"
+  [isTrendingSubjects]="true"
+  [ngClass]="'tw - overflow - scroll'"
+  class="tw-h-full tw-flex"
+></front-end-internship-assignment-table-view>

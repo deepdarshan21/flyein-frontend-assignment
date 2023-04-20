@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { SubjectsService } from '../../core/services/subjects.service';
-import { Book } from 'src/app/core/models/book-response.model';
+import { Book } from 'src/app/core/models/result-response.model';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'front-end-internship-assignment-trending-subjects',
@@ -9,21 +10,21 @@ import { Book } from 'src/app/core/models/book-response.model';
   styleUrls: ['./trending-subjects.component.scss'],
 })
 export class TrendingSubjectsComponent implements OnInit {
-
-  isLoading: boolean = true;
-
-  subjectName: string = '';
-
-  allBooks: Book[] = [];
+  isLoading = true;
+  subjectName = '';
+  // allBooks: Book[] = [];
+  bookSearchResult: MatTableDataSource<Book>;
 
   constructor(
     private route: ActivatedRoute,
     private subjectsService: SubjectsService
-  ) {}
+  ) {
+    this.bookSearchResult = new MatTableDataSource();
+  }
 
   getAllBooks() {
     this.subjectsService.getAllBooks(this.subjectName).subscribe((data) => {
-      this.allBooks = data?.works;
+      this.bookSearchResult.data = data?.works;
       // this.subjectsArray = data;
       this.isLoading = false;
     });
@@ -36,5 +37,4 @@ export class TrendingSubjectsComponent implements OnInit {
       this.getAllBooks();
     });
   }
-
 }
