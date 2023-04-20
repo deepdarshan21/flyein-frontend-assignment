@@ -1,19 +1,17 @@
 .header {
   height: 50px;
-  @apply
-  tw-flex
+  @apply tw-flex
   tw-flex-row
   tw-justify-between
   tw-items-center
-  tw-rounded-4-px
+  tw-rounded-4-px;
 }
 
 .search-button {
   input:focus {
-      outline: none;
-    }
-  @apply
-  tw-border 
+    outline: none;
+  }
+  @apply tw-border 
   tw-border-solid 
   tw-border-dark-border
   tw-rounded-4-px
@@ -21,20 +19,17 @@
   tw-justify-center
   tw-items-center
   tw-px-2
-  tw-py-1
-  
+  tw-py-1;
 }
 
 .trending-subjects {
   flex: 0 0 33%;
-  @apply
-  tw-rounded-4-px
+  @apply tw-rounded-4-px;
 }
 
-.sidebar{
+.sidebar {
   padding-top: 50px;
-  background: linear-gradient(146deg, #8600e7 19.67%, #c200f2 127.56%);
+  background: linear-gradient(120deg, #a638f5 19.67%, #f20089 127.56%);
   color: white;
-  @apply
-  tw-px-4
+  @apply tw-px-4;
 }

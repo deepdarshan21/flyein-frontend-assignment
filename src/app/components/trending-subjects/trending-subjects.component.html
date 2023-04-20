@@ -4,6 +4,21 @@
   ></front-end-internship-assignment-table-view>
 </div> -->
 
+<div class="tw-mb-24-px tw-text-24-px">
+  Top {{ bookSearchResult.data.length }} book{{
+    bookSearchResult.data.length > 1 ? 's' : ''
+  }}
+  on
+  {{ subjectName }}
+</div>
+
+<div
+  *ngIf="isLoading"
+  class="tw-absolute top-0 left-0 tw-flex tw-justify-center tw-items-center tw-h-full tw-w-full tw-bg-[rgba(0,0,0,.1)]"
+>
+  <mat-spinner [diameter]="48"></mat-spinner>
+</div>
+
 <front-end-internship-assignment-table-view
   [booksList]="bookSearchResult"
   [isTrendingSubjects]="true"
